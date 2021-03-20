@@ -29,6 +29,10 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
     if "hotstar" in url:
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("IN")
+    
+    if "manifest" in url:
+        command_to_exec.append("-f")
+        command_to_exec.append("'bestvideo[height=360]+bestaudio'")
     #
     if yt_dl_user_name is not None:
         command_to_exec.append("--username")
